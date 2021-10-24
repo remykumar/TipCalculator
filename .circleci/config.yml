@@ -1,8 +1,13 @@
 version: 2.1
+general:
+  branches:
+    only:
+      - main
 jobs:
   build:
     docker:
       - image: cimg/python:3.8
+     
 
     working_directory: ~/tip_calculator
     
