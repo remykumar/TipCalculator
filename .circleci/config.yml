@@ -25,4 +25,3 @@ jobs:
           command: | 
            . venv/bin/activate
            python3 ~/tip_calculator/tip_calculator.py 200 20
-     
