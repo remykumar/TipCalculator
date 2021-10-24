@@ -26,7 +26,10 @@ jobs:
            venv/bin/pip3 install -U wheel
       #3 Run coding coversion software plus tester - 
       - run: 
-          name: Deploy & Run
+          name: Deploy, Run & Clean-up
           command: | 
            . venv/bin/activate
-           python3 ~/tip_calculator/tip_calculator.py 200 20
+           venv/bin/python3 ~/tip_calculator/tip_calculator.py 200 20
+           #mkdir ~/DEPLOY-$(date '+%Y%m%d')
+
+
