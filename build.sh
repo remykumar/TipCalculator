@@ -13,7 +13,7 @@ BUILD_DIRECTORY=/tmp/temp_build_directory
 SRC_DIRECTORY=${HOME}/TipCalculator
 DEPLOY_DIRECTORY=$HOME/DEPLOY-$(date '+%Y%m%d')
 
-echo -e "\nChecking if running as the current user.\n"
+echo -e "\nChecking if running as the current user..\n"
 sleep 3
 if [ $USER = root ]; then
  echo -e "!!!!Running with root user; existing script. Please run with your normal user account!!!!\n"
@@ -25,7 +25,7 @@ else
 fi
 
 # Starting the Build process
-echo -e "\nSTARTING BUILD PROCESS..\n"
+echo -e "\nSTARTING BUILD PROCESS FOR REFERENCE SOFTWARE..\n"
 sleep 2
 
 # Remove all the previously used old directories
@@ -61,7 +61,7 @@ python3 -m venv venv
 venv/bin/pip3 install -r requirements.txt
 
 echo -e "\nDEPLOY COMPLETE AND RUNNING THE WEATHER INFO CODE..\n"
-echo "Script usage : python3 tip_calculator.py [Bill Total] [Tip percent] , ex - python3 tip_calculator.py 200 20"
+echo -e "\nScript usage : python3 tip_calculator.py [Bill Total] [Tip percent] , eg. : python3 tip_calculator.py 200 20\n"
 sleep 3
 venv/bin/python3 tip_calculator.py 200 20
 
