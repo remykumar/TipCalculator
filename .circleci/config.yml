@@ -16,7 +16,7 @@ jobs:
       - checkout
       #2 Create virtual environment and install dependencies -
       - run: 
-          name: triggering the build
+          name: Triggering the build
           command: |
            python3 -m pip install --upgrade pip
            python3 -m venv venv
@@ -26,7 +26,7 @@ jobs:
            venv/bin/pip3 install -U wheel
       #3 Run coding coversion software plus tester - 
       - run: 
-          name: deploy & run
+          name: Deploy & Run
           command: | 
            . venv/bin/activate
            python3 ~/tip_calculator/tip_calculator.py 200 20
