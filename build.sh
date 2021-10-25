@@ -66,15 +66,19 @@ echo -e "\nScript usage : python3 tip_calculator.py [Bill Total] [Tip percent] ,
 sleep 3
 venv/bin/python3 tip_calculator.py 200 20
 
-echo -e "\nCLEANING UP..\n"
+echo -e "\nCLEANING UP & MOVING ARTIFACTS..\n"
+cp -r ${BUILD_DIRECTORY}/* ${DEPLOY_DIRECTORY}
+echo -e "\nUploading Deployment artifacts to AWS S3..\n"
+sleep 2
+venv/bin/aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive --exclude "venv/*" --exclude "__pycache__/*"
+#venv/bin/aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive --exclude "venv/*"  --include "*.txt" --include "*.md" --include "*.sh"
 deactivate
 rm -rf venv/__pycache__
 rm -rf venv
 rm -rf __pycache__
+rm -rf ${DEPLOY_DIRECTORY}
+mkdir ${DEPLOY_DIRECTORY}
 cp -r ${BUILD_DIRECTORY}/* ${DEPLOY_DIRECTORY}
-echo -e "\n Uploading Deployment artifacts to AWS S3..\n"
-sleep 2 
-aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive
 rm -rf ${BUILD_DIRECTORY}
 
 echo -e "END OF DEPLOYMENT!!\n"
