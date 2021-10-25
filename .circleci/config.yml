@@ -25,6 +25,17 @@ jobs:
            venv/bin/pip3 install -r requirements.txt
            venv/bin/pip3 install -U wheel 
            venv/bin/pip3 install awscli
+      #2 Perform the automated tests with pytest 
+      - run: 
+          name: Run tests 
+          command: | 
+           . venv/bin/activate
+           pytest --junitxml=test-results/junit.xml
+      - store_test_results: 
+           path: test-results 
+      - store_artifacts: 
+           path: test-results        
+          
       #3 Run coding coversion software plus tester - 
       - run: 
           name: Deploy, Run & Clean-up
@@ -35,6 +46,7 @@ jobs:
            cp -r ~/tip_calculator/* ~/DEPLOY-$(date '+%Y%m%d')
            echo -e "\nUploading Deployment artifacts to AWS S3..\n"
            venv/bin/aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive --exclude "venv/*" --exclude "__pycache__/*"
+           venv/bin/aws s3 cp test-results s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d')/test-results --recursive --exclude "venv/*" --exclude "__pycache__/*"
            deactivate
            rm -rf ~/tip_calculator/__pycache__
            rm -rf ~/tip_calculator/venv/__pycache__
