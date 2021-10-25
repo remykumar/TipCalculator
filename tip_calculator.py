@@ -8,7 +8,7 @@ import colors
 A small program to calculate the tip amount at varying percentages
 """
 class TipCalculator:
-    newTotal = 0
+    newTotal = 1
 def print_instruction():
     print(f'{bcolors.YELLOW}Usage : Enter the Total Bill amount and Tip % (options are 10,15,20,25,30) as program argument as whole numbers, like,')
     print(f'{bcolors.BLUE}python3 tip_calculator.py 200 20')
