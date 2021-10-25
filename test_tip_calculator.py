@@ -2,7 +2,7 @@
 Unit test for the tip calulator reference software
 """
 
-import tip_calculator 
+import tip_calculator
 
 class TestTip: 
  def test_tip10percent(self): 

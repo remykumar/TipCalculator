@@ -52,9 +52,6 @@ else:
         print(f'{bcolors.BLUE}Recommended tipping amount = {tip20percent(total,tip)}, New Total = {TipCalculator.newTotal}')
     elif tip == 25:
         print(f'{bcolors.BLUE}Recommended tipping amount = {tip25percent(total,tip)}, New Total = {TipCalculator.newTotal}')
-    elif tip == 25:
-        print(f'{bcolors.BLUE}Recommended tipping amount = {tip25percent(total,tip)}, New Total = {TipCalculator.newTotal}')
     elif tip == 30:
         print(f'{bcolors.BLUE}Recommended tipping amount = {tip30percent(total, tip)}, New Total = {TipCalculator.newTotal}')
-
 
