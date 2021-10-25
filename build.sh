@@ -14,19 +14,19 @@ SRC_DIRECTORY=${HOME}/TipCalculator
 DEPLOY_DIRECTORY=$HOME/DEPLOY-$(date '+%Y%m%d')
 
 echo -e "\nChecking if running as the current user..\n"
-sleep 3
+sleep 1
 if [ $USER = root ]; then
  echo -e "!!!!Running with root user; existing script. Please run with your normal user account!!!!\n"
  exit
 else
  echo -e "Switching to $SRC_DIRECTORY directory if not already in it - $SRC_DIRECTORY\n"
- sleep 2
+ sleep 1
  cd $SRC_DIRECTORY
 fi
 
 # Starting the Build process
 echo -e "\nSTARTING BUILD PROCESS FOR REFERENCE SOFTWARE..\n"
-sleep 2
+sleep 1
 
 # Remove all the previously used old directories
 echo -e "REMOVING OLD BUILD AND DEPLOY DIRECTORIES..\n"
@@ -63,14 +63,14 @@ venv/bin/pip3 install awscli
 
 echo -e "\nDEPLOY COMPLETE AND RUNNING THE TIP CALCULATOR CODE..\n"
 echo -e "\nScript usage : python3 tip_calculator.py [Bill Total] [Tip percent] , eg. : python3 tip_calculator.py 200 20\n"
-sleep 3
+sleep 2
 venv/bin/python3 tip_calculator.py 200 20
 
 echo -e "\nCLEANING UP & MOVING ARTIFACTS..\n"
 cp -r ${BUILD_DIRECTORY}/* ${DEPLOY_DIRECTORY}
-echo -e "\nUploading Deployment artifacts to AWS S3..\n"
-sleep 2
-venv/bin/aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive --exclude "venv/*" --exclude "__pycache__/*"
+#echo -e "\nUploading Deployment artifacts to AWS S3..\n"
+#sleep 2
+#venv/bin/aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive --exclude "venv/*" --exclude "__pycache__/*"
 #venv/bin/aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive --exclude "venv/*"  --include "*.txt" --include "*.md" --include "*.sh"
 deactivate
 rm -rf venv/__pycache__
