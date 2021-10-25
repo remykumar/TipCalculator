@@ -59,13 +59,14 @@ echo -e "\nCREATING PYTHON VIRTUAL ENVIRONMENT & INSTALLING REQUIREMENTS..\n"
 python3 -m venv venv
 . venv/bin/activate
 venv/bin/pip3 install -r requirements.txt
+venv/bin/pip3 install awscli
 
 echo -e "\nDEPLOY COMPLETE AND RUNNING THE TIP CALCULATOR CODE..\n"
 echo -e "\nScript usage : python3 tip_calculator.py [Bill Total] [Tip percent] , eg. : python3 tip_calculator.py 200 20\n"
 sleep 3
 venv/bin/python3 tip_calculator.py 200 20
 
-echo -e "CLEANING UP..\n"
+echo -e "\nCLEANING UP..\n"
 deactivate
 rm -rf venv/__pycache__
 rm -rf venv
