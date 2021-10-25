@@ -23,6 +23,7 @@ jobs:
            . venv/bin/activate
            venv/bin/pip3 install -U pip setuptools virtualenv  
            venv/bin/pip3 install -r requirements.txt
+           venv/bin/pip3 install pytest pytest-cov
            venv/bin/pip3 install -U wheel 
            venv/bin/pip3 install awscli
       #2 Perform the automated tests with pytest 
