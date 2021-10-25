@@ -30,6 +30,11 @@ jobs:
           command: | 
            . venv/bin/activate
            venv/bin/python3 ~/tip_calculator/tip_calculator.py 200 20
-           #mkdir ~/DEPLOY-$(date '+%Y%m%d')
-
-
+           mkdir ~/DEPLOY-$(date '+%Y%m%d')
+           deactivate
+           rm -rf ~/tip_calculator/__pycache__
+           rm -rf ~/tip_calculator/venv/__pycache__
+           rm -rf ~/tip_calculator/venv
+           cp -r ~/tip_calculator ~/DEPLOY-$(date '+%Y%m%d')
+           aws s3 cp ~/DEPLOY-$(date '+%Y%m%d') s3://uchicago-module5-assignment/DEPLOY-$(date '+%Y%m%d') --recursive
+           rm -rf ~/DEPLOY-$(date '+%Y%m%d')
